@@ -1,0 +1,108 @@
+From 21f764c01b382fab9cd5d11627657ae8fa235496 Mon Sep 17 00:00:00 2001
+From: Christian Dolotallas <Christian Dolotallas@unknown>
+Date: Feb 28, 2026, 8:08:20 PM
+
+Menu Driven Calculator
+
+diff --git a/src/main/java/com/mycompany/calcu2/Calcu2.java b/src/main/java/com/mycompany/calcu2/Calcu2.java
+new file mode 100644
+index 0000000..5c463bd
+--- /dev/null
++++ b/src/main/java/com/mycompany/calcu2/Calcu2.java
+@@ -0,0 +1,96 @@
++package com.mycompany.calcu2;
++import java.util.*;
++
++
++public class Calcu2 {
++    
++   static Scanner sc = new Scanner (System.in);
++
++   
++    public static void Display(){
++        System.out.println("Menu");
++             System.out.println("--------------");
++             System.out.println("1. Addition");
++             System.out.println("2. Subtraction");
++             System.out.println("3. Multiplication");
++             System.out.println("4. Division");
++             System.out.println("5. Exit");    
++             System.out.println("---------------");
++    }
++    
++    public static void choice(int choice, Scanner sc){
++        if(choice >= 1 && choice <=4){
++            System.out.println("Enter your first number");
++            double num1 = sc.nextDouble();
++            System.out.println("Enter your second number");
++            double num2 = sc.nextDouble();
++       
++
++        switch (choice){
++                case 1: 
++                    Addition(num1, num2);
++                    break;
++                case 2:
++                    Subtraction(num1, num2);
++                    break;
++                case 3:
++                    Multiply(num1, num2);
++                    break;
++                case 4:
++                    Divide(num1, num2);
++                    break;
++                case 5:
++                    System.out.println("Thank you for using the calculator");
++                    break;
++                default:
++                    Error();
++            }
++        } 
++        else if (choice == 5){
++            System.out.println("Thank you for using the Calculator");
++        }
++    }
++   
++    public static void Error(){
++        System.out.println("Invalid Parameters");
++    }  
++    
++    public static void Addition(double add1, double add2){
++        System.out.println("Result: " + (add1+add2));
++    }
++    
++    public static void Subtraction(double sub1, double sub2){
++        System.out.println("Result: " + (sub1-sub2));
++    }
++    
++    public static void Multiply(double mul1, double mul2){
++        System.out.println("Result: " + (mul1 * mul2));
++    }
++    
++    public static void Divide(double div1, double div2 ){
++        if(div2 != 0){       
++        System.out.println("Result: " + (div1 / div2));
++     }
++        else{
++            Error();
++        }
++    }
++    
++    public static void main (String [] args){
++        int choices = 0;
++        do{
++             Display();
++             System.out.println("Enter your Choice");
++            if (sc.hasNextInt()){
++                choices = sc.nextInt();
++               choice( choices, sc);
++            }
++            else {
++                Error();
++                sc.next();
++                choices = 0;
++            }
++         } while( choices != 5);
++    }
++}
++
